@@ -6,7 +6,6 @@ const {
 const { getText } = require("./lib/commands");
 
 let page;
-let browser;
 let tomorrow = "nav.page-nav > a:nth-child(2)"; // на завтра
 let oneWeek = "nav.page-nav > a:nth-child(7)"; // на неделю
 let movieTime = "[data-seance-id='94']"; // 14:00, Hercules
