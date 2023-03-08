@@ -13,6 +13,14 @@ let ticketHint = "p.ticket__hint";
 let confirmingText =
   "Покажите QR-код нашему контроллеру для подтверждения бронирования.";
 
+  beforeEach(async () => {
+      page = await browser.newPage();
+  });
+
+  afterEach(() => {
+      page.close();
+  });
+
 describe("Booking tickets", () => {
   beforeEach(async () => {
     await page.goto("http://qamid.tmweb.ru/client/index.php");
