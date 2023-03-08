@@ -8,10 +8,9 @@ const { getText } = require("./lib/commands");
 let page;
 let tomorrow = "nav.page-nav > a:nth-child(2)"; // на завтра
 let oneWeek = "nav.page-nav > a:nth-child(7)"; // на неделю
-let movieTime = "[data-seance-id='94']"; // 14:00, Hercules
+let movieTime = "[data-seance-id='129']"; // 19:00, Логан
 let ticketHint = "p.ticket__hint";
-let confirmingText =
-  "Покажите QR-код нашему контроллеру для подтверждения бронирования.";
+let confirmingText = "Покажите QR-код нашему контроллеру для подтверждения бронирования.";
 
   beforeEach(async () => {
       page = await browser.newPage();
