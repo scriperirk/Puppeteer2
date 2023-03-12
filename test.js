@@ -68,7 +68,6 @@ describe("Booking tickets", () => {
     let seat = 10;
     await selectDateTime(page, oneWeek, movieTime);
     await orderTickets(page, row, seat);
-    await page.goto("http://qamid.tmweb.ru/client/index.php");
     await selectDateTime(page, oneWeek, movieTime);
     await checkSeatIsTaken(page, row, seat);
     const classExist = await page.$eval(
