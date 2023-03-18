@@ -1,8 +1,4 @@
-const {
-  selectDateTime,
-  orderTickets,
-  checkSeatIsTaken,
-} = require("./lib/util.js");
+const { selectDateTime, orderTickets } = require("./lib/util.js");
 const { getText } = require("./lib/commands");
 
 let page;
