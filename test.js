@@ -1,19 +1,17 @@
-const {
-  selectDateTime,
-  orderTickets,
-  checkSeatIsTaken,
-} = require("./lib/util.js");
-const { getText } = require("./lib/commands");
+const { clickElement, putText, getText } = require("./lib/commands.js");
+const { selectDateTime, orderTickets } = require("./lib/util.js");
 
 let page;
 let tomorrow = "nav.page-nav > a:nth-child(2)"; // на завтра (9 число)
 let oneWeek = "nav.page-nav > a:nth-child(7)"; // на неделю (14 число)
-let movieTime = "[data-seance-id='129']"; // 19:00, Логан
+let movieTime = "[data-seance-id='94']"; // 19:00, Логан -129-
 let ticketHint = "p.ticket__hint";
 let confirmingText = "Покажите QR-код нашему контроллеру для подтверждения бронирования.";
 
   beforeEach(async () => {
-      page = await browser.newPage();
+    page = await browser.newPage();
+    await page.goto("http://qamid.tmweb.ru/client/index.php");
+    await page.setDefaultNavigationTimeout(0);
   });
 
   afterEach(() => {
@@ -21,16 +19,6 @@ let confirmingText = "Покажите QR-код нашему контролле
   });
 
 describe("Booking tickets", () => {
-  beforeEach(async () => {
-    await page.goto("http://qamid.tmweb.ru/client/index.php");
-  });
-
-  afterEach(async () => {
-    await page.evaluate(() => {
-      localStorage.clear();
-      sessionStorage.clear();
-    });
-  });
 
   //Задача 1
   test("Should order one ticket for Movie (Логан) tomorrow", async () => {
@@ -68,8 +56,8 @@ describe("Booking tickets", () => {
     let seat = 10;
     await selectDateTime(page, oneWeek, movieTime);
     await orderTickets(page, row, seat);
+    await page.goto("http://qamid.tmweb.ru/client/index.php");
     await selectDateTime(page, oneWeek, movieTime);
-    await checkSeatIsTaken(page, row, seat);
     const classExist = await page.$eval(
       `div.buying-scheme__wrapper > div:nth-child(${row}) > span:nth-child(${seat})`,
       (el) => el.classList.contains("buying-scheme__chair_taken")
