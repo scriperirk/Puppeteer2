@@ -10,6 +10,7 @@ let confirmingText = "Покажите QR-код нашему контролле
 
 describe("Booking tickets", () => {
   beforeEach(async () => {
+    page = await browser.newPage();
     await page.goto("http://qamid.tmweb.ru/client/index.php");
   });
 
