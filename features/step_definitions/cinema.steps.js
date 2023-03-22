@@ -68,6 +68,7 @@ When(
   }
 );
 
+
 Then("user received confirmation and qr-code", async function () {
   const actual = await getText(this.page, ticketHint);
   expect(actual).contain(confirmingText);
@@ -80,3 +81,4 @@ Then("Book button is not active", async function () {
   );
   expect(buttonStatus).equal(true);
 });
+
