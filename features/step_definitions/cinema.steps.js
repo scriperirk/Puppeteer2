@@ -13,10 +13,9 @@ setDefaultTimeout(60 * 1000);
 
 let tomorrow = "nav.page-nav > a:nth-child(2)"; // Билеты на завтра
 let oneWeek = "nav.page-nav > a:nth-child(7)"; // Билеты через неделю
-let movieTime = "[data-seance-id='94']"; // 14:00, Hercules, Movie1
+let movieTime = "[data-seance-id='129']"; // 14:00, Hercules, Movie1
 let ticketHint = "p.ticket__hint";
-let confirmingText =
-  "Покажите QR-код нашему контроллеру для подтверждения бронирования.";
+let confirmingText = "Покажите QR-код нашему контроллеру для подтверждения бронирования.";
 
 Before(async function () {
   const browser = await puppeteer.launch({ headless: false, slowMo: 50 });
